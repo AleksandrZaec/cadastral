@@ -23,7 +23,7 @@ class JsonFormatter(logging.Formatter):
 def _build_handler() -> logging.Handler:
     """Create a stdout handler with configured formatter."""
     handler = logging.StreamHandler(stream=sys.stdout)
-    if settings.LOG_JSON:
+    if getattr(settings, "LOG_JSON", False):
         handler.setFormatter(JsonFormatter())
     else:
         formatter = logging.Formatter(
@@ -36,10 +36,11 @@ def _build_handler() -> logging.Handler:
 
 def get_logger(name: Optional[str] = None) -> logging.Logger:
     """Get a configured logger, creating handlers only once."""
-    logger_name = name or settings.LOG_NAME
+    logger_name = name or getattr(settings, "LOG_NAME", "app")
     logger = logging.getLogger(logger_name)
     if not logger.handlers:
-        logger.setLevel(getattr(logging, settings.LOG_LEVEL.upper(), logging.INFO))
+        log_level_name = getattr(settings, "LOG_LEVEL", "INFO")
+        logger.setLevel(getattr(logging, str(log_level_name).upper(), logging.INFO))
         handler = _build_handler()
         logger.addHandler(handler)
         logger.propagate = False

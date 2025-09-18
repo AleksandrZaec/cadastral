@@ -15,10 +15,9 @@ class Settings(BaseSettings):
 
     EXTERNAL_SERVICE_URL: str
 
-    # Logging
-    LOG_LEVEL: str = "INFO"
-    LOG_JSON: bool = False
-    LOG_NAME: str = "app"
+    LOG_LEVEL: str
+    LOG_JSON: bool
+    LOG_NAME: str
 
     @property
     def DB_URL(self) -> str:

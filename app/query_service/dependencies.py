@@ -11,7 +11,6 @@ logger = get_logger("deps")
 
 async def get_request_service(db: AsyncSession = Depends(get_db)) -> RequestService:
     """Provide a `RequestService` bound to current DB session."""
-    # Keep logs low-noise on hot path
     repo = SQLAlchemyRequestRepository(db)
     service = RequestService(repo)
     return service

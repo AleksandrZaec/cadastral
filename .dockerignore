@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Python кеши
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.pytest_cache/
+
+# Виртуальные окружения (если в проекте)
+venv/
+env/
+.env
+.venv
+# IDE и редакторы
+.vscode/
+.idea/
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.swp
+
+# Docker volume data — чтобы не тащить базу в образ
+pg_data/
+pg_test_data/
+
+# Файлы конфигурации окружения (с секретами)
+.env
+.test.en
