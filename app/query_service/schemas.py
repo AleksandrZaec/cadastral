@@ -1,5 +1,3 @@
-"""Pydantic schemas for request input and output models."""
-
 from pydantic import BaseModel, ConfigDict, field_validator
 from typing import Optional
 from datetime import datetime

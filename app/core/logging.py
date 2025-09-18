@@ -1,5 +1,3 @@
-"""Lightweight logging utilities with optional JSON output."""
-
 import logging
 import sys
 from typing import Optional
